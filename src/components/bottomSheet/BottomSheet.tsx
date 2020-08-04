@@ -152,6 +152,7 @@ export class BottomSheet extends Component<BottomSheetProps> {
   private masterDrawer = React.createRef<TapGestureHandler>();
   private drawerHandleRef = React.createRef<PanGestureHandler>();
   private scrollableRef = React.createRef<ScrollableRef>();
+  private prevScrollableRef = React.createRef<ScrollableRef>();
 
   /**
    * Pan gesture handler events for drawer handle and content
