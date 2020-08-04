@@ -12,6 +12,7 @@ export interface BottomSheetInternalContextType {
   decelerationRate: Animated.Value<number>;
   contentPaddingBottom: number;
   setScrollableRef: (ref: RefObject<any>) => void;
+  removeScrollableRef: (ref: RefObject<any>) => void;
 }
 
 export const BottomSheetInternalContext = createContext<
@@ -26,6 +27,7 @@ export const BottomSheetInternalContext = createContext<
   decelerationRate: new Animated.Value(0),
   contentPaddingBottom: 0,
   setScrollableRef: () => {},
+  removeScrollableRef: () => {},
 });
 
 export const BottomSheetInternalProvider = BottomSheetInternalContext.Provider;

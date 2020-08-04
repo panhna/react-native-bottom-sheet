@@ -57,6 +57,7 @@ const ScrollView = forwardRef(
       drawerOldGestureState,
       lastStartScrollY,
       setScrollableRef,
+      removeScrollableRef,
     } = useBottomSheetInternal();
 
     // styles
@@ -100,6 +101,9 @@ const ScrollView = forwardRef(
     );
     const handleFocus = useCallback(() => {
       setScrollableRef(scrollViewRef);
+      return () => {
+        removeScrollableRef(scrollViewRef);
+      };
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

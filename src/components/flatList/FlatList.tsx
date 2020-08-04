@@ -54,6 +54,7 @@ const FlatList = forwardRef(
       drawerOldGestureState,
       lastStartScrollY,
       setScrollableRef,
+      removeScrollableRef,
     } = useBottomSheetInternal();
 
     // styles
@@ -97,6 +98,9 @@ const FlatList = forwardRef(
     );
     const handleFocus = useCallback(() => {
       setScrollableRef(flatListRef);
+      return () => {
+        removeScrollableRef(flatListRef);
+      };
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

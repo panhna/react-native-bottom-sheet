@@ -525,8 +525,14 @@ export class BottomSheet extends Component<BottomSheetProps> {
     let id = findNodeHandle(ref.current);
     // @ts-ignore
     let type = ref.current?._component?.constructor.name ?? null;
+    let currentRefId = this.scrollableRef.current?.id ?? null;
 
-    if (id && type) {
+    if (id && type && currentRefId !== id) {
+      if (this.scrollableRef.current) {
+        // @ts-ignore
+        this.prevScrollableRef.current = this.scrollableRef.current;
+      }
+
       // @ts-ignore
       this.scrollableRef.current = {
         id,
@@ -538,6 +544,16 @@ export class BottomSheet extends Component<BottomSheetProps> {
       this.drawerOldGestureState.setValue(GestureState.ACTIVE);
       this.drawerGestureState.setValue(GestureState.END);
       this.snapTo(this.currnetSnapIndex.current ?? 0);
+    }
+  };
+
+  private removeScrollableRef = (ref: RefObject<Scrollable>) => {
+    let id = findNodeHandle(ref.current);
+    let currentRefId = this.scrollableRef.current?.id ?? null;
+
+    if (id === currentRefId) {
+      // @ts-ignore
+      this.scrollableRef.current = this.prevScrollableRef.current;
     }
   };
 
@@ -602,6 +618,7 @@ export class BottomSheet extends Component<BottomSheetProps> {
             decelerationRate: this.decelerationRate,
             contentPaddingBottom: this.getNormalisedSnapPoints()[0],
             setScrollableRef: this.setScrollableRef,
+            removeScrollableRef: this.removeScrollableRef,
           }}
         >
           {children}
