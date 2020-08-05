@@ -100,7 +100,7 @@ const SectionList = forwardRef(
       []
     );
     const handleFocus = useCallback(() => {
-      setScrollableRef(sectionListRef);
+      setScrollableRef(sectionListRef, 'SectionList');
       return () => {
         removeScrollableRef(sectionListRef);
       };

@@ -97,7 +97,7 @@ const FlatList = forwardRef(
       []
     );
     const handleFocus = useCallback(() => {
-      setScrollableRef(flatListRef);
+      setScrollableRef(flatListRef, 'FlatList');
       return () => {
         removeScrollableRef(flatListRef);
       };

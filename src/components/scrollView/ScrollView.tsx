@@ -100,7 +100,7 @@ const ScrollView = forwardRef(
       []
     );
     const handleFocus = useCallback(() => {
-      setScrollableRef(scrollViewRef);
+      setScrollableRef(scrollViewRef, 'ScrollView');
       return () => {
         removeScrollableRef(scrollViewRef);
       };

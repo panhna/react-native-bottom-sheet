@@ -1,6 +1,7 @@
 import { createContext, RefObject, Ref } from 'react';
 import { TapGestureHandler, State } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
+import { ScrollableRef } from './types';
 
 export interface BottomSheetInternalContextType {
   lastStartScrollY: Animated.Value<number>;
@@ -11,7 +12,7 @@ export interface BottomSheetInternalContextType {
   masterDrawerRef: Ref<TapGestureHandler>;
   decelerationRate: Animated.Value<number>;
   contentPaddingBottom: number;
-  setScrollableRef: (ref: RefObject<any>) => void;
+  setScrollableRef: (ref: RefObject<any>, type: ScrollableRef['type']) => void;
   removeScrollableRef: (ref: RefObject<any>) => void;
 }
 

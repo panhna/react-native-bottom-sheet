@@ -522,10 +522,11 @@ export class BottomSheet extends Component<BottomSheetProps> {
     });
   };
 
-  private setScrollableRef = (ref: RefObject<Scrollable>) => {
+  private setScrollableRef = (
+    ref: RefObject<Scrollable>,
+    type: ScrollableRef['type']
+  ) => {
     let id = findNodeHandle(ref.current);
-    // @ts-ignore
-    let type = ref.current?._component?.constructor.name ?? null;
     let currentRefId = this.scrollableRef.current?.id ?? null;
 
     if (id && type && currentRefId !== id) {
