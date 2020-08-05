@@ -541,11 +541,6 @@ export class BottomSheet extends Component<BottomSheetProps> {
         type,
         node: ref.current!,
       };
-
-      this.lastStartScrollY.setValue(0);
-      this.drawerOldGestureState.setValue(GestureState.ACTIVE);
-      this.drawerGestureState.setValue(GestureState.END);
-      this.snapTo(this.currnetSnapIndex.current ?? 0);
     }
   };
 
