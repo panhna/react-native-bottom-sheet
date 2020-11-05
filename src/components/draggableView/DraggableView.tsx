@@ -73,6 +73,7 @@ const BottomSheetDraggableViewComponent = ({
   return (
     <PanGestureHandler
       ref={panGestureRef}
+      activeOffsetY={[-10, 10]}
       enabled={enabled}
       simultaneousHandlers={simultaneousHandlers}
       shouldCancelWhenOutside={false}
